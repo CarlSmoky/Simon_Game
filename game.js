@@ -22,11 +22,24 @@ $(".btn").click(function () {
   playSound(userChosenColour);
   animatePress(userChosenColour);
 
+  
 });
 
 
 
+const nextSequence = () => {
 
+  userClickedPattern = [];
+  level++;
+  $(`#level-title`).text(`Level ${level}`);
+
+  const randomNumber = Math.floor(Math.random() * 4);
+  const randomChosenColour = buttonColours[randomNumber];
+  gamePattern.push(randomChosenColour);
+
+  $(`#${randomChosenColour}`).fadeIn(100).fadeOut(100).fadeIn(100);
+  playSound(randomChosenColour);
+}
 
 const playSound = (name) => {
   const audio = new Audio(`sounds/${name}.mp3`);
