@@ -1,14 +1,14 @@
-let gamePattern = [];
+
 const buttonColours = ["red", "blue", "green", "yellow"];
 
-const nextSequence = () => {
-  return Math.floor(Math.random() * 3) + 1;
-} 
-
-const randomChosenColour = () => {
-  return buttonColours[nextSequence()];
+const playSound = (name) => {
+  const audio = new Audio(`sounds/${name}.mp3`);
+  audio.play();
 }
 
-gamePattern = [...gamePattern, randomChosenColour()];
-console.log(gamePattern);
-
+const animatePress = (currentColor) => {
+  $(`#${currentColor}`).addClass("pressed");
+  setTimeout(function () {
+    $(`#${currentColor}`).removeClass("pressed");
+  }, 100);
+}
